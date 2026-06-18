@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: 'Outfit', 'Noto Sans Bengali', sans-serif;
+  --font-display: 'Space Grotesk', 'Noto Sans Bengali', sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 0 35% 5%;
+  --foreground: 0 0% 95%;
+  --card: 0 30% 8%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 30% 8%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 0 0% 95%;
+  --primary-foreground: 0 35% 5%;
+  --secondary: 0 20% 12%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 20% 12%;
+  --muted-foreground: 0 0% 55%;
+  --accent: 25 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 20% 16%;
+  --input: 0 20% 14%;
+  --ring: 25 100% 50%;
+  --radius: 0rem;
+  --orange: 25 100% 50%;
+}
+
+.dark {
+  --background: 0 35% 5%;
+  --foreground: 0 0% 95%;
+  --card: 0 30% 8%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 30% 8%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 0 0% 95%;
+  --primary-foreground: 0 35% 5%;
+  --secondary: 0 20% 12%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 20% 12%;
+  --muted-foreground: 0 0% 55%;
+  --accent: 25 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 20% 16%;
+  --input: 0 20% 14%;
+  --ring: 25 100% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* Custom utilities */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  color: transparent;
+}
+
+/* Cart blink animation */
+@keyframes cart-blink {
+  0%   { transform: scale(1);    filter: drop-shadow(0 0 0px hsl(25 100% 50% / 0)); }
+  20%  { transform: scale(1.35); filter: drop-shadow(0 0 8px hsl(25 100% 50% / 0.9)); }
+  40%  { transform: scale(1.1);  filter: drop-shadow(0 0 4px hsl(25 100% 50% / 0.6)); }
+  60%  { transform: scale(1.25); filter: drop-shadow(0 0 8px hsl(25 100% 50% / 0.9)); }
+  80%  { transform: scale(1.05); filter: drop-shadow(0 0 3px hsl(25 100% 50% / 0.4)); }
+  100% { transform: scale(1);    filter: drop-shadow(0 0 0px hsl(25 100% 50% / 0)); }
+}
+
+.cart-blink {
+  animation: cart-blink 2s ease-in-out;
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
